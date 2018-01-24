@@ -1,0 +1,28 @@
+{{yield}}
+<header id="header">
+  <nav class="navbar is-primary">
+    <div class="navbar-brand">
+	  {{#link-to 'index' class="navbar-item is-logo"}}
+          {{#yield-slot 'logo'}}{{yield}}{{/yield-slot}}
+	  {{/link-to}}
+    </div>
+    <div class="navbar-end">
+      {{#if (eq config.environment "development")}}
+        {{#link-to "freestyle" class="navbar-item"}}Styleguide{{/link-to}}
+      {{/if}}
+      <a href="{{docs}}" class="navbar-item">Documentation</a>
+      {{#yield-slot 'external-nav'}}{{yield}}{{/yield-slot}}
+    </div>
+  </nav>
+  <div class="is-secondary">
+    {{#yield-slot 'internal-nav'}}{{yield}}{{/yield-slot}}
+  </div>
+</header>
+<main class="columns">
+  <div class="column is-one-quarter">
+    {{#yield-slot 'sidebar'}}{{yield}}{{/yield-slot}}
+  </div>
+  <div class="column is-three-quarters">
+    {{#yield-slot 'content'}}{{yield}}{{/yield-slot}}
+  </div>
+</main>

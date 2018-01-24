@@ -1,0 +1,17 @@
+{{#hashicorp-product name="Consul" docs="https://www.consul.io/docs/index.html"}}
+  {{yield}}
+  {{#block-slot 'logo'}}Consul{{/block-slot}}
+  {{#block-slot 'internal-nav'}}
+    {{#yield-slot 'internal-navigation'}}{{yield}}{{/yield-slot}}
+  {{/block-slot}}
+  {{#block-slot 'sidebar'}}
+    <nav>
+      <ul>
+        <li>{{datacenter-select}}</li>
+        <li>{{#link-to "index" activeClass="is-active"}}Services{{/link-to}}</li>
+        <li>{{#link-to "index" activeClass="is-active"}}Nodes{{/link-to}}</li>
+      </ul>
+    </nav>
+  {{/block-slot}}
+  {{#block-slot 'content'}}{{/block-slot}}
+{{/hashicorp-product}}

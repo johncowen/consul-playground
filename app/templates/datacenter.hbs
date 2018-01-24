@@ -1,0 +1,9 @@
+{{#hashicorp-consul}}
+  {{#block-slot 'internal-navigation'}}Datacenter{{/block-slot}}
+  {{#block-slot 'content'}}
+    {{#each model as |item| }}
+      {{#link-to 'datacenter.service-collection.service' item}}{{item.Name}}{{/link-to}}
+    {{/each}}
+    {{outlet}}
+  {{/block-slot}}
+{{/hashicorp-consul}}

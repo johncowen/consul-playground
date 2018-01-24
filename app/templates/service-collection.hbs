@@ -1,0 +1,11 @@
+{{#hashicorp-consul}}
+  {{#block-slot 'internal-navigation'}}Services{{/block-slot}}
+  {{#block-slot 'content'}}
+    {{#each model as |item| }}
+      {{#link-to 'service-collection.service' item}}{{item.Name}}{{/link-to}}
+    {{/each}}
+    {{outlet}}
+    after outlet
+  {{/block-slot}}
+{{/hashicorp-consul}}
+

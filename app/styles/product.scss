@@ -1,0 +1,28 @@
+.product {
+  // full height?
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  #header {
+    position: fixed;
+    width: 100%;
+    // z-index: $z-header;
+
+    // Defensive styles in case header height goes over 100px, causing
+    // the left gutter menu to be on top of the header.
+    height: $header-height;
+    overflow: hidden;
+  }
+
+  main {
+    margin-top: $header-height;
+    > * {
+      &.is-one-quarter {
+        // position: fixed;
+        bottom: 0;
+        top: $header-height;
+      }
+    }
+  }
+}

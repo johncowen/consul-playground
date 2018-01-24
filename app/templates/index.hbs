@@ -1,0 +1,12 @@
+{{#hashicorp-consul}}
+  {{#block-slot 'internal-navigation'}}Index{{/block-slot}}
+  {{#block-slot 'content'}}
+    <ul>
+    {{#each model as |item|}}
+      <li>
+        {{ item.Name }}
+      </li>
+    {{/each}}
+    </ul>
+  {{/block-slot}}
+{{/hashicorp-consul}}
