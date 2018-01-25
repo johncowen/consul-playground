@@ -1,10 +1,9 @@
-import { inject as locateService } from '@ember/service';
+import { inject as locate } from '@ember/service';
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  store: locateService(),
+  em: locate('datacenter'),
   model(params) {
-    return this.get('store')
-      .findAll('service-collection')
+    return this.get('em.services');
   },
 });

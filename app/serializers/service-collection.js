@@ -1,19 +1,11 @@
-// import Serializer from './application';
-const arrayToPayload = (arr, property) => {
-  return {
-    [property]: arr
-  }
-}
-import Serializer from 'ember-data/serializers/rest';
+import normalize from '../lib/normalizeArrayResponse';
+
+import Serializer from './application';
+
 export default Serializer.extend({
   primaryKey: 'Name',
-  normalizeFindAllResponse(store, primaryModelClass, payload, id, requestType) {
-    return this._super(
-      store,
-      primaryModelClass,
-      arrayToPayload(payload, primaryModelClass.modelName),
-      id,
-      requestType
-    );
+  normalizeFindAllResponse() {
+    this._super; // ????
+    return normalize.bind(this)(...arguments)
   },
 });

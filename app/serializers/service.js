@@ -1,19 +1,18 @@
-// import Serializer from './application';
-const arrayToPayload = (arr, property) => {
-  return {
-    [property]: arr
-  }
+import normalize from '../lib/normalizeArrayResponse';
+
+import Serializer from './application';
+const idify = function(item, i, arr) {
+  // keep this here for the moment, these should eventually be unique
+  // item.Name = `${item.Service.ID}.${item.Node.ID}`;
+  item.Id = `${item.Service.ID}`;
+  return item;
 }
-import Serializer from 'ember-data/serializers/rest';
 export default Serializer.extend({
-  primaryKey: 'Name',
+  primaryKey: 'Id',
   normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {
-    return this._super(
-      store,
-      primaryModelClass,
-      arrayToPayload(payload, primaryModelClass.modelName),
-      id,
-      requestType
-    );
+    //this._super;
+
+    return normalize.bind(this)(...arguments, idify)
+    return res;
   },
 });

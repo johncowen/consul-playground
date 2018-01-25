@@ -1,0 +1,10 @@
+<h2>
+{{model.Id}}
+{{model.Node.Node}}
+{{model.Node.Address}}
+{{model.Service.Service}}
+</h2>
+{{! tags }}
+{{#each model.Checks as |item|}}
+  {{consul-healthcheck item=item}}
+{{/each}}

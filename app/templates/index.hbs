@@ -1,10 +1,10 @@
 {{#hashicorp-consul}}
-  {{#block-slot 'internal-navigation'}}Index{{/block-slot}}
-  {{#block-slot 'content'}}
+  {{#block-slot "internal-navigation"}}Index{{/block-slot}}
+  {{#block-slot "content"}}
     <ul>
     {{#each model as |item|}}
       <li>
-        {{ item.Name }}
+        {{#link-to "datacenter" item.Name }}{{ item.Name }}{{/link-to}}
       </li>
     {{/each}}
     </ul>

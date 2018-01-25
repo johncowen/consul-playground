@@ -1,17 +1,9 @@
+import { inject as locate } from '@ember/service';
 import Route from '@ember/routing/route';
-import { computed } from '@ember/object';
 
 export default Route.extend({
-  // em: computed(
-  //   function() {
-  //     const o = this;
-  //     return {
-  //       find() {
-  //         return ['dc', 'something'];
-  //       }
-  //     }
-  // }),
+  em: locate('datacenter'),
   model(params) {
-    return this.get('store').findAll('datacenter')
+    return this.get('em.items')
   }
 });

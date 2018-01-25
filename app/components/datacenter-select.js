@@ -4,23 +4,29 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   em: locate('datacenter'),
+  routing: locate('-routing'),
   items: computed(
-    'em.datacenters.[]',
+    'em.items.[]',
     function() {
       return this.get('em.items');
     }
   ),
   selected: computed(
-    "items",
-    function()
-    {
-      return this.get("items").toArray()[0];
+    'items',
+    'routing.router.currentURL',
+    function() {
+      const router = this.get("routing.router");
+      const pathname = router.get('currentURL');
+      const temp = pathname.split('/');
+      if(temp.length > 1) {
+        const datacenter = temp[1];
+        return this.get('items').findBy('Name', datacenter);
+      }
     }
   ),
   actions: {
     onChange(item) {
-      console.log(item.get('Name'));
+      this.get('routing.router').transitionTo('datacenter', item.get('Name'));
     }
-
   }
 });
