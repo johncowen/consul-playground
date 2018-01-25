@@ -1,4 +1,4 @@
-import normalize from '../lib/createArrayNormalizerMixin';
+import normalize from '../lib/createArrayNormalizer';
 
 import Serializer from './application';
 export default Serializer.extend(
