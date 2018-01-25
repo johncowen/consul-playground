@@ -8,5 +8,5 @@ export default Serializer.extend(
   ),
   {
     primaryKey: 'Name'
-    }
+  }
 );
