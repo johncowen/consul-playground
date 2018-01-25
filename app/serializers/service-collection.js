@@ -1,11 +1,9 @@
-import normalize from '../lib/normalizeArrayResponse';
+import normalize from '../lib/createArrayNormalizerMixin';
 
 import Serializer from './application';
-
-export default Serializer.extend({
-  primaryKey: 'Name',
-  normalizeFindAllResponse() {
-    this._super; // ????
-    return normalize.bind(this)(...arguments)
-  },
-});
+export default Serializer.extend(
+  normalize('findAll'),
+  {
+    primaryKey: 'Name'
+  }
+);
