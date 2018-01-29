@@ -1,4 +1,4 @@
-import response from '../../lib/response';
+import response from '../../../lib/response';
 
 import { inject as locate } from '@ember/service';
 import Route from '@ember/routing/route';

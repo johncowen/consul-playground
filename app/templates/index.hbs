@@ -4,7 +4,7 @@
     <ul>
     {{#each model as |item|}}
       <li>
-        {{#link-to "datacenter" item.Name }}{{ item.Name }}{{/link-to}}
+        {{#link-to "datacenter.services" item.Name }}{{ item.Name }}{{/link-to}}
       </li>
     {{/each}}
     </ul>

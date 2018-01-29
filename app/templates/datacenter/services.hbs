@@ -2,7 +2,7 @@
   {{#block-slot "internal-navigation"}}Datacenter / {{item.Name}} {{/block-slot}}
   {{#block-slot "content"}}
     {{#each item.Services as |item| }}
-      {{#link-to "datacenter.service" item.Name}}{{item.Name}}{{/link-to}}
+      {{#link-to "datacenter.services.service" item.Name}}{{item.Name}}{{/link-to}}
     {{/each}}
     {{outlet}}
   {{/block-slot}}

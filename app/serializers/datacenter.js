@@ -2,11 +2,17 @@ import normalize from '../lib/createArrayNormalizer';
 
 import Serializer from './application';
 export default Serializer.extend(
-  normalize(
-    'findAll',
-    (item) => ({Name: item})
-  ),
   {
     primaryKey: 'Name'
-  }
+  },
+  normalize(
+    'findAll',
+    function(item) {
+      // item is just a string with the name/slug
+      // of the datacenter
+      return {
+        [this.get('primaryKey')]: item
+      };
+    }
+  )
 );

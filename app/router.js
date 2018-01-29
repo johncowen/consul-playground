@@ -18,11 +18,11 @@ Router.map(function() {
   this.route(
     'datacenter',
     {
-      path: '/:Name/services'
+      path: '/:Name'
     },
     function() {
-      this.route('service', {path: '/:service_Name'}, function() {
-        // this.route('service', {path: '/:Name'});
+      this.route('services', {path: '/services'}, function() {
+        this.route('service', {path: '/:service_Name'});
       });
     }
   );

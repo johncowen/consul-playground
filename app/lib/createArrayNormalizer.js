@@ -16,6 +16,9 @@ import pojo from './pojo';
 // property of each object in the array
 // `["one", "two"]` > `{modelName: [{primaryKey: "one"}, {primaryKey: "two"}]}`
 
+
+// TODO: This does too much
+
 export default function(requestName, map) {
   var method = `normalize${capitalize(requestName)}Response`;
   return {
@@ -23,7 +26,7 @@ export default function(requestName, map) {
         return this._super(
           store,
           primaryModelClass,
-          pojo(primaryModelClass.modelName)(map == null ? payload : payload.map(map)),
+          pojo(primaryModelClass.modelName)(map == null ? payload : payload.map(map, this)),
           id,
           requestType
         )
