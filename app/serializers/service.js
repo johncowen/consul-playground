@@ -3,7 +3,7 @@ import { assign } from '@ember/polyfills';
 import Serializer from './application';
 export default Serializer.extend(
   normalize(
-    'findAll',
+    'findRecord',
     (item) => assign(
       item,
       {Id: `${item.Service.ID}`}
