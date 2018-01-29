@@ -24,6 +24,9 @@ Router.map(function() {
       this.route('services', {path: '/services'}, function() {
         this.route('service', {path: '/:service_Name'});
       });
+      this.route('nodes', {path: '/nodes'}, function() {
+        this.route('node', {path: '/:node_Name'});
+      });
     }
   );
 });

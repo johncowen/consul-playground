@@ -5,13 +5,17 @@
     {{#yield-slot 'internal-navigation'}}{{yield}}{{/yield-slot}}
   {{/block-slot}}
   {{#block-slot 'sidebar'}}
+    {{#yield-slot 'menu'}}
+      {{yield}}
+    {{else}}
     <nav>
       <ul>
         <li>{{datacenter-select}}</li>
-        <li>{{#link-to "index"}}Services{{/link-to}}</li>
-        <li>{{#link-to "index"}}Nodes{{/link-to}}</li>
+        <li>{{#link-to "datacenter.services" "dc1" }}Services{{/link-to}}</li>
+        <li>{{#link-to "datacenter.nodes" "dc1"}}Nodes{{/link-to}}</li>
       </ul>
     </nav>
+    {{/yield-slot}}
   {{/block-slot}}
   {{#block-slot 'content'}}{{/block-slot}}
 {{/hashicorp-product}}
