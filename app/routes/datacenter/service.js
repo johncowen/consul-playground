@@ -12,7 +12,7 @@ export default Route.extend(
       const name = request.service_Name;
       return template.render(
         {
-          model: this.get('em').findBySlug(name)
+          item: this.get('em').findBySlug(name)
         }
       );
     }

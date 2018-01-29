@@ -9,9 +9,10 @@ export default Route.extend(
   response(
     function(request, template)
     {
+      const datacenter = request.Name;
       return template.render(
         {
-          model: this.get('em.services')
+          item: this.get('em').findBySlug(datacenter)
         }
       );
     }

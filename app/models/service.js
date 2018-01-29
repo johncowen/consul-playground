@@ -7,8 +7,10 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 // import sumAggregation from '../utils/properties/sum-aggregation';
 export default Entity.extend({
   Id: attr('string'), // added by ember
+  Name: attr('string'),
   Node: attr(),
   Service: attr(),
-  Checks: attr()
+  Checks: attr(),
+  Datacenter: belongsTo('service')
 });
 

@@ -6,6 +6,7 @@ import { belongsTo, hasMany } from 'ember-data/relationships';
 // import { fragmentArray } from 'ember-data-model-fragments/attributes';
 // import sumAggregation from '../utils/properties/sum-aggregation';
 export default Entity.extend({
-  Name: attr('string')
+  Name: attr('string'),
+  Services: hasMany('service')
 });
 

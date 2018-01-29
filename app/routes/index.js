@@ -11,7 +11,7 @@ export default Route.extend(
     {
       return template.render(
         {
-          model: this.get('em.items')
+          model: this.get('em').findAll()
         }
       );
     }

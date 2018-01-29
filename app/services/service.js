@@ -3,16 +3,10 @@ import { computed } from '@ember/object';
 
 export default Service.extend({
   store: locate('store'),
-  items: computed(function() {
-    return this.get('store').findAll('service-collection');
-  }),
-  findBySlug(name) {
-      return this.get('store').findRecord(
-        'service',
-        name,
-        {
-          reload: true
-        }
-      );
+  findByDatacenter: function(datacenter) {
+      return this.get('store').findAll('service');
+  },
+  findBySlug: function(slug) {
+      return this.get('store').findRecord('service', slug);
   },
 });

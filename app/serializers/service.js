@@ -9,6 +9,13 @@ export default Serializer.extend(
       {Id: `${item.Service.ID}`}
     )
   ),
+  normalize(
+    'findAll',
+    function(item) {
+      item.Id = item.Name;
+      return item;
+    }
+  ),
   {
     primaryKey: 'Id',
   }

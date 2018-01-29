@@ -11,3 +11,18 @@
 
 
 @import "ember-power-select";
+dl {
+  overflow: hidden;
+  display: inline-block;
+}
+dt {
+  font-weight: bold;
+}
+dt::after {
+  content: ":";
+  display: inline;
+}
+dl > * {
+  float: left;
+  width: 50%;
+}

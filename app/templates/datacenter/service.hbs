@@ -1,10 +1,14 @@
-<h2>
-{{model.Id}}
-{{model.Node.Node}}
-{{model.Node.Address}}
-{{model.Service.Service}}
-</h2>
+<dl>
+  <dt>Id</dt>
+  <dd>{{item.Id}}</dd>
+  <dt>Node Name</dt>
+  <dd>{{item.Node.Node}}</dd>
+  <dt>Node Address</dt>
+  <dd>{{item.Node.Address}}</dd>
+  <dt>Service Name</dt>
+  <dd>{{item.Service.Service}}</dd>
+</dl>
 {{! tags }}
-{{#each model.Checks as |item|}}
+{{#each item.Checks as |item|}}
   {{consul-healthcheck item=item}}
 {{/each}}
