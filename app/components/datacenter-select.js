@@ -26,7 +26,7 @@ export default Component.extend({
   ),
   actions: {
     onChange(item) {
-      this.get('routing.router').transitionTo('datacenter', item.get('Name'));
+      this.get('routing.router').transitionTo('datacenter.services', item.get('Name'));
     }
   }
 });

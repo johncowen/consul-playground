@@ -1,5 +1,9 @@
 [
-  "dc1",
-  "us-east",
-  "us-west"
+  ${
+    range(10).map(
+        function(item, i) {
+            return `"${fake.address.countryCode().toLowerCase()}-${ i % 2 ? "west" : "east"}"`;
+        }
+    )
+  }
 ]
