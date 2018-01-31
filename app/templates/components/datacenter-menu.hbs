@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+    <li>
+{{#power-select
+  options=items
+  selected=selected
+  searchField="Name"
+  tagName="div"
+  onchange=(action "onChange")
+  as |item|
+}}
+  {{item.Name}}
+{{/power-select}}
+    </li>
+    <li>
+      {{#link-to "datacenter.services" selected.Name}}Services{{/link-to}}
+    </li>
+    <li>
+      {{#link-to "datacenter.nodes" selected.Name}}Nodes{{/link-to}}
+    </li>
+  </ul>
+</nav>

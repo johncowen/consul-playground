@@ -4,6 +4,6 @@ export default Adapter.extend({
     return `/${this.namespace}/internal/ui/nodes`;
   },
   urlForFindRecord(id, modelName) {
-    return `/${this.namespace}/health/service/${id}`;
+    return `/${this.namespace}/internal/ui/node/${id}`;
   }
 });

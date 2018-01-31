@@ -22,10 +22,10 @@ Router.map(function() {
     },
     function() {
       this.route('services', {path: '/services'}, function() {
-        this.route('service', {path: '/:service_Name'});
+        this.route('service', {path: '/:Name'});
       });
       this.route('nodes', {path: '/nodes'}, function() {
-        this.route('node', {path: '/:node_Name'});
+        this.route('node', {path: '/:Name'});
       });
     }
   );

@@ -8,13 +8,7 @@
     {{#yield-slot 'menu'}}
       {{yield}}
     {{else}}
-    <nav>
-      <ul>
-        <li>{{datacenter-select}}</li>
-        <li>{{#link-to "datacenter.services" "dc1" }}Services{{/link-to}}</li>
-        <li>{{#link-to "datacenter.nodes" "dc1"}}Nodes{{/link-to}}</li>
-      </ul>
-    </nav>
+      {{datacenter-menu}}
     {{/yield-slot}}
   {{/block-slot}}
   {{#block-slot 'content'}}{{/block-slot}}

@@ -1,0 +1,9 @@
+    {{#ember-collection
+      items=items
+      class="node-list"
+      cell-layout=(fixed-grid-layout 800 50) as |item index|
+    }}
+      {{#link-to "datacenter.nodes.node" item.ID}}{{item.ID}}{{/link-to}}
+    {{/ember-collection}}
+
+

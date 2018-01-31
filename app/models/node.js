@@ -2,7 +2,7 @@
 // import { computed } from '@ember/object';
 import Entity from 'ember-data/model';
 import attr from 'ember-data/attr';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import { belongsTo } from 'ember-data/relationships';
 // import { fragmentArray } from 'ember-data-model-fragments/attributes';
 // import sumAggregation from '../utils/properties/sum-aggregation';
 export default Entity.extend({
@@ -13,6 +13,6 @@ export default Entity.extend({
   Services: attr(),
   Checks: attr(),
   TaggedAddresses: attr(),
-  Datacenter: belongsTo('service')
+  Datacenter: belongsTo('datacenter')
 });
 

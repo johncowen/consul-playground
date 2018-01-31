@@ -1,11 +1,7 @@
 {{#hashicorp-consul}}
   {{#block-slot "internal-navigation"}}Datacenter / {{item.Name}} {{/block-slot}}
   {{#block-slot "content"}}
-    <ul style="float: left;margin-right: 50px;">
-    {{#each item.Services as |item| }}
-      <li>{{#link-to "datacenter.services.service" item.Name}}{{item.Name}}{{/link-to}}</li>
-    {{/each}}
-    </ul>
+    {{consul-service-list items=item.Services}}
     {{outlet}}
   {{/block-slot}}
 {{/hashicorp-consul}}

@@ -1,5 +1,4 @@
 import Service, { inject as locate } from '@ember/service';
-import { computed } from '@ember/object';
 
 export default Service.extend({
   store: locate('store'),

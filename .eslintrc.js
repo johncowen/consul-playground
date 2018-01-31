@@ -15,6 +15,9 @@ module.exports = {
     browser: true
   },
   rules: {
+    // "no-console": "warn",
+    // "no-unused-vars": ["error", {"args": "none"}],
+    // "ember/routes-segments-snake-case": "warn"
   },
   overrides: [
     // node files

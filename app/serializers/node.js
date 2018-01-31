@@ -1,18 +1,16 @@
 import normalize from '../lib/createArrayNormalizer';
-import { assign } from '@ember/polyfills';
 import Serializer from './application';
 export default Serializer.extend(
-  // normalize(
-  //   'findRecord',
-  //   (item) => assign(
-  //     item,
-  //     {Id: `${item.Service.ID}`}
-  //   )
-  // ),
+  {
+    primaryKey: 'ID',
+    normalizeFindRecordResponse: function(store, primaryModelClass, payload, id, requestType) {
+      payload = {
+        node: payload
+      };
+      return this._super(store, primaryModelClass, payload, id, requestType);
+    }
+  },
   normalize(
     'findAll'
-  ),
-  {
-    primaryKey: 'ID'
-  }
+  )
 );

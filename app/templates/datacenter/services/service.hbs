@@ -8,7 +8,3 @@
   <dt>Service Name</dt>
   <dd>{{item.Service.Service}}</dd>
 </dl>
-{{! tags }}
-{{#each item.Checks as |item|}}
-  {{consul-healthcheck item=item}}
-{{/each}}

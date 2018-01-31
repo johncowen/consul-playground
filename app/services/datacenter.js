@@ -26,8 +26,8 @@ export default Service.extend({
         return o.get('service').findByDatacenter(item.get('Name')).then(
           function(services)
           {
-            // set(item, 'Services', services);
-            item.Services = services;
+            set(item, 'Services', services);
+            // item.Services = services;
             return item;
           }
         );
@@ -38,17 +38,12 @@ export default Service.extend({
         return o.get('node').findByDatacenter(item.get('Name')).then(
           function(nodes)
           {
-            // set(item, 'Nodes', nodes);
-            item.Nodes = nodes;
+            set(item, 'Nodes', nodes);
+            // item.Nodes = nodes;
             return item;
           }
         );
       }
-    ).catch(
-      function()
-      {
-        console.log("ERROR");
-      }
-    )
+    );
   }
 });
