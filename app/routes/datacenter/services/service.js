@@ -6,10 +6,10 @@ export default Route.extend(
     em: locate('service'),
     request: function(request, render)
     {
-      const service = request.Name;
+      const slug = request.Name;
       return render(
         {
-          item: this.get('em').findBySlug(service)
+          item: this.get('em').findBySlug(slug)
         }
       );
     }

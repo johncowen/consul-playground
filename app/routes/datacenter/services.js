@@ -6,10 +6,10 @@ export default Route.extend(
     em: locate('datacenter'),
     request: function(request, render)
     {
-      const datacenter = this.paramsFor("datacenter").Name;
+      const slug = this.paramsFor("datacenter").Name;
       return render(
         {
-          item: this.get('em').findBySlug(datacenter)
+          item: this.get('em').findBySlug(slug)
         }
       );
     }

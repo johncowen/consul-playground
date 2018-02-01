@@ -1,20 +1,16 @@
-import response from '../../../lib/response';
-
 import { inject as locate } from '@ember/service';
 import Route from '@ember/routing/route';
 export default Route.extend(
   {
-    em: locate('node')
-  },
-  response(
-    function(request, template)
+    em: locate('node'),
+    request: function(request, render)
     {
-      const name = request.node_Name;
-      return template.render(
+      const slug = request.Name;
+      return render(
         {
-          item: this.get('em').findBySlug(name)
+          item: this.get('em').findBySlug(slug)
         }
       );
     }
-  ),
+  }
 );

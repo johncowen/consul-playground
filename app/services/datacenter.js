@@ -12,7 +12,6 @@ export default Service.extend({
     return this.get('items')
   },
   findBySlug: function(slug) {
-    const o = this;
     // just populate the lot
     // for now
     return this.findAll().then(
@@ -21,9 +20,8 @@ export default Service.extend({
         return datacenters.findBy('Name', slug);
       }
     ).then(
-      function(item)
-      {
-        return o.get('service').findByDatacenter(item.get('Name')).then(
+      (item) => {
+        return this.get('service').findByDatacenter(item.get('Name')).then(
           function(services)
           {
             set(item, 'Services', services);
@@ -33,9 +31,8 @@ export default Service.extend({
         );
       }
     ).then(
-      function(item)
-      {
-        return o.get('node').findByDatacenter(item.get('Name')).then(
+      (item) => {
+        return this.get('node').findByDatacenter(item.get('Name')).then(
           function(nodes)
           {
             set(item, 'Nodes', nodes);
