@@ -14,3 +14,4 @@ export default Service.extend({
   findRecord: function(type, id) {
   },
 });
+

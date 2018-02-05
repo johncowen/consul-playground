@@ -1,6 +1,4 @@
 ---
-app.data.service:
-  object: "@service:store"
 app.datacenter.service:
   class: "service:datacenter"
   arguments:

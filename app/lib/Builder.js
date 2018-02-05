@@ -47,7 +47,7 @@ export default class Builder {
   set() {
 
   }
-  has() {
-
+  has(key) {
+    return this.container.hasRegistration(key);
   }
 }

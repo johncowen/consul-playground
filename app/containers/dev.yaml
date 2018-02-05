@@ -1,0 +1,9 @@
+---
+app.data.service:
+  object: "@service:store"
+app.double.fetch:
+  class: "service:double.fetch"
+  arguments:
+    store: "@service:store"
+    datacenterSerializer: "@serializer:datacenter"
+    datacenterAdaptor: "@adapter:datacenter"

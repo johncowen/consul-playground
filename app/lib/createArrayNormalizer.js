@@ -21,6 +21,7 @@ import pojo from './pojo';
 
 export default function(requestName, map) {
   var method = `normalize${capitalize(requestName)}Response`;
+
   return {
       [method](store, primaryModelClass, payload, id, requestType) {
         return this._super(
