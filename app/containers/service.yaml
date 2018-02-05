@@ -1,0 +1,14 @@
+---
+app.services.service:
+  class: "service:service"
+  arguments:
+    store: "@service:store"
+app.services.route:
+  class: "route:datacenter.services"
+  arguments:
+    "repo": "@service:datacenter"
+app.service.route:
+  class: "route:datacenter.services.service"
+  arguments:
+    "repo": "@service:service"
+

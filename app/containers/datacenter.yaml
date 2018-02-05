@@ -1,0 +1,9 @@
+---
+app.data.service:
+  object: "@service:store"
+app.datacenter.service:
+  class: "service:datacenter"
+  arguments:
+    store: "@app.data.service"
+    service: "@service:service"
+    node: "@service:node"

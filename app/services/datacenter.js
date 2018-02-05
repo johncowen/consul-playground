@@ -1,15 +1,12 @@
-import Service, { inject as locate } from '@ember/service';
+import Service from '@ember/service';
 import { computed, set } from '@ember/object';
 
 export default Service.extend({
-  store: locate('store'),
-  service: locate('service'),
-  node: locate('node'),
-  items: computed(function() {
-    return this.get('store').findAll('datacenter');
-  }),
+  // store: locate('store'),
+  // service: locate('service'),
+  // node: locate('node'),
   findAll: function() {
-    return this.get('items')
+    return this.get('store').findAll('datacenter');
   },
   findBySlug: function(slug) {
     // just populate the lot

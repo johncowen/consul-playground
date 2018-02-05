@@ -3,12 +3,11 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
-  em: locate('datacenter'),
+  repo: locate('datacenter'),
   routing: locate('-routing'),
   items: computed(
-    'em.items.[]',
     function() {
-      return this.get('em.items');
+      return this.get('repo').findAll();
     }
   ),
   selected: computed(

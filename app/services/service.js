@@ -6,6 +6,11 @@ export default Service.extend({
       return this.get('store').findAll('service');
   },
   findBySlug: function(slug) {
-      return this.get('store').findRecord('service', slug);
+      // end of the promise chain is completely lost here :(, catch is pointless
+      // return this.get('store').findRecord('sevice', slug).catch(console.error);
+      // this is caught hggher up fine
+      // return Promise.reject("hi");
+      // error.hbs doesn't catch this either
+      return this.get('store').findRecord('service', slug).catch(console.error);
   },
 });
