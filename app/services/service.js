@@ -10,6 +10,6 @@ export default Service.extend({
       // this is caught hggher up fine
       // return Promise.reject("hi");
       // error.hbs doesn't catch this either
-      return this.get('store').findRecord('service', slug).catch(console.error);
+      return this.get('store').findRecord('service', slug);//.catch(console.error);
   },
 });

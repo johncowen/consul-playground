@@ -7,3 +7,7 @@ app.double.fetch:
     store: "@service:store"
     datacenterSerializer: "@serializer:datacenter"
     datacenterAdaptor: "@adapter:datacenter"
+# app.adapter:
+#   class: "adapter"
+#   arguments:
+#     finder: "@service:double.fetch"

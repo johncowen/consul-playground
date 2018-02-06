@@ -28,7 +28,6 @@ export function initialize(container /*application*/) {
       config
     )
   );
-  console.log(builder.has("serializer:datacenter"));
 }
 export default {
   name: 'builder',

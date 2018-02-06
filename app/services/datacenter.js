@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { computed, set } from '@ember/object';
-
+//(service, node)
 export default Service.extend({
   findAll: function() {
     return this.get('store').findAll('datacenter');
