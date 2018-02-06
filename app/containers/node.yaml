@@ -1,13 +1,19 @@
 ---
+
+# all
 app.nodes.service:
   class: "service:node"
   arguments:
     store: "@service:store"
+
+# items
 app.nodes.route:
   class: "route:datacenter.nodes"
   arguments:
-    "repo": "@service:datacenter"
+    repo: "@service:datacenter"
+
+# item
 app.node.route:
   class: "route:datacenter.nodes.service"
   arguments:
-    "repo": "@service:node"
+    repo: "@service:node"

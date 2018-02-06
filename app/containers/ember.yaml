@@ -1,0 +1,5 @@
+---
+ember.data.adapter:
+  class: "adapter"
+  arguments:
+    finder: "@service:finder.index"

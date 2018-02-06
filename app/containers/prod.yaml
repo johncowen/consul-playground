@@ -1,3 +1,0 @@
----
-app.data.service:
-  object: "@service:store"

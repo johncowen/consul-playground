@@ -23,6 +23,11 @@ export default Component.extend({
       }
     }
   ),
+  // didReceiveAttrs: function(options)
+  // {
+  //   this._super(...arguments);
+  //   console.log(this.getAttr("src"));
+  // },
   actions: {
     onChange(item) {
       this.get('routing.router').transitionTo('datacenter.services', item.get('Name'));

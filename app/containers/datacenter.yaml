@@ -1,7 +1,8 @@
 ---
+# all
 app.datacenter.service:
   class: "service:datacenter"
   arguments:
-    store: "@app.data.service"
+    store: "@service:store"
     service: "@service:service"
     node: "@service:node"

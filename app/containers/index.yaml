@@ -2,4 +2,4 @@
 app.index.route:
   class: "route:index"
   arguments:
-    "repo": "@service:datacenter"
+    repo: "@service:datacenter"

@@ -1,3 +1,12 @@
+import Route from '@ember/routing/route';
+import Adapter from 'ember-data/adapters/rest';
+import Service, { inject as locate } from '@ember/service';
+const EmberBase = {
+  'route': Route,
+  'adapter': Adapter,
+  'service': Service
+};
+
 // quick POC ContainerBuilder
 export default class Builder {
   constructor(container) {
@@ -15,13 +24,27 @@ export default class Builder {
           return;
         }
         const args = service.arguments;
-        Object.keys(args).forEach(
-          function(key, i, arr)
-          {
-            this.container.inject(service.class, key, this._find(args[key], config))
-          },
-          this
-        );
+        const cls = service.class;
+        // workaround for uninjectable base classes :(
+        if(cls.indexOf(":") === -1) {
+          EmberBase[cls].reopen(
+            Object.keys(args).reduce(
+              (prev, key, i, arr) => {
+                prev[key] = this.get(this._find(args[key], config));
+                return prev;
+              },
+              {}
+            )
+          );
+        } else {
+          Object.keys(args).forEach(
+            function(key, i, arr)
+            {
+              this.container.inject(cls, key, this._find(args[key], config));
+            },
+            this
+          );
+        }
       },
       this
     );
@@ -41,8 +64,16 @@ export default class Builder {
     }
   }
   // yet to be implemented interface
-  get() {
-
+  get(qualifiedKey) {
+    // what did lookup do?
+    // this gets the instance of the class
+    // return this.container.resolveRegistration(key);
+    const [type, key] = qualifiedKey.split(":");
+    switch(type) {
+      case "service":
+      default:
+        return locate(key);
+    }
   }
   set() {
 
