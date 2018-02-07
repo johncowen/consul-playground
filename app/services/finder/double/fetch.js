@@ -2,13 +2,19 @@ import Service from '@ember/service';
 
 import fetch from 'fetch';
 
-import renderFactory from 'npm:rest-double/render';
+import renderFactory from 'npm:astroturf';
 const render = renderFactory(23/* faker seed */);
 const find = function(path)
 {
   return fetch(path)
     .then(response => response.text())
-    .then(template => render(path, template))
+    .then(template => render(
+      {
+        href: path,
+        content: template,
+        headers: {}, method: "GET"
+      }
+    ))
     .then(JSON.parse)
 }
 

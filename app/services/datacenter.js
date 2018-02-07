@@ -1,7 +1,7 @@
 import Service from '@ember/service';
-import { computed, set } from '@ember/object';
-//(service, node)
+import { set } from '@ember/object';
 export default Service.extend({
+  //                  (store: EmberDataStore, service:ServiceRepository, node:NodeRepository)
   findAll: function() {
     return this.get('store').findAll('datacenter');
   },

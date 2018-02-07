@@ -27,6 +27,9 @@ Router.map(function() {
       this.route('nodes', {path: '/nodes'}, function() {
         this.route('node', {path: '/:Name'});
       });
+      this.route('kv', {path: '/kv'}, function() {
+        this.route('kv', {path: '/*'});
+      });
     }
   );
 });
