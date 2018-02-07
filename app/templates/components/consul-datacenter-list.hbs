@@ -1,9 +1,5 @@
-    {{#ember-collection
-      items=items
-      class="service-list"
-      cell-layout=(fixed-grid-layout 800 20) as |item index|
-    }}
-      {{#link-to "datacenter.services" item.Name}}{{item.Name}}{{/link-to}}
-    {{/ember-collection}}
+  {{#each items as |item|}}
+      {{#link-to "datacenter.services" item.Name data-test-datacenter-list-item="item.Name"}}{{item.Name}}{{/link-to}}
+  {{/each}}
 
 

@@ -75,8 +75,9 @@ export default class Builder {
         return locate(key);
     }
   }
-  set() {
-
+  set(key, value) {
+    this.container.register(key, value);
+    return this;
   }
   has(key) {
     return this.container.hasRegistration(key);

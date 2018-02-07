@@ -20,7 +20,7 @@ if(true && devConfig) {
 
 export function initialize(container /*application*/) {
   const builder = new Builder(container);
-  builder.build(
+  return builder.set("service:builder", builder).build(
     merge(
       emberConfig,
       indexConfig,

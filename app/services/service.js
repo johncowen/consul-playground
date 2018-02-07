@@ -2,7 +2,14 @@ import Service from '@ember/service';
 
 export default Service.extend({
   findByDatacenter: function(datacenter) {
-      return this.get('store').findAll('service');
+      return this.get('store').findAll(
+        'service',
+        {
+          adapterOptions: {
+            dc: 'nyc'
+          }
+        }
+      );
   },
   findBySlug: function(slug) {
       // end of the promise chain is completely lost here :(, catch is pointless
@@ -10,6 +17,9 @@ export default Service.extend({
       // this is caught hggher up fine
       // return Promise.reject("hi");
       // error.hbs doesn't catch this either
-      return this.get('store').findRecord('service', slug);//.catch(console.error);
+      return this.get('store').findRecord(
+        'service',
+        slug
+      );//.catch(console.error);
   },
 });

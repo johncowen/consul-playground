@@ -19,6 +19,8 @@ const find = function(path)
 }
 
 export default Service.extend({
+  // look at query/queryRecord, which I think is the closest
+  // public method to ajax
   findAll: function(store, modelClass, sinceToken, snapshotArray) {
     const path = this.urlForFindAll(null, modelClass.modelName);
     return find(`/node_modules/consul-api-double/${path}`);

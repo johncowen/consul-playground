@@ -4,7 +4,7 @@ import { inject as locate } from '@ember/service';
 export function initialize(application) {
   Adapter.reopen(
     {
-      // finder /* :Findable */: locate('finder.index'),
+      // finder/*:Findable */: locate('finder.double.fetch'),
       findAll: function() {
         return this.get('finder').findAll.apply(this, arguments);
       },
