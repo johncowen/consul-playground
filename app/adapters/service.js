@@ -1,31 +1,44 @@
 import Adapter from './application';
-import { get } from '@ember/object';
+import { assign } from '@ember/polyfills';
+import { typeOf } from '@ember/utils';
+
+// lets float this:
+// Adapter is essentially a singleton
+// _data should be truly private
+const _data = [];
 export default Adapter.extend({
-  // ieuu, private..
-  // ajaxOptions() {
-  //   const hash = this._super(...arguments);
-  //   hash.data = this.adapterOptions;
-  //   this.adapterOptions = null;
-  //   return hash;
-  // },
-  // buildURL: function (type, id, snapshot, queryType, query) {
-  //   // if (queryType === 'queryRecord' && query.__id__) {
-  //   //   url += '/' + query.__id__;
-  //   //   query.__id__ = null;
-  //   //   delete query.__id__;
-  //   // }
-  //   // return url;
-  //   console.log("BUILDURL");
-  //   return this._super(...arguments);
-  // },
+  // not great but avoid private
+  // happier for the moment
+  dataForRequest: function(params)
+  {
+    switch(params.requestType) {
+      case "findAll":
+        params.query = assign(
+          {},
+          params.query,
+          this.getDataFor(params.requestType)
+        );
+    }
+    return this._super(params);
+  },
+  setDataFor(requestName, data) {
+    _data[requestName] = data;
+  },
+  getDataFor(requestName, data) {
+    if(typeOf(_data[requestName]) === "undefined") {
+      return {};
+    }
+    return _data[requestName];
+  },
   urlForFindAll() {
     return `/${this.namespace}/internal/ui/services`;
   },
   urlForFindRecord(id, modelName) {
     return `/${this.namespace}/health/service/${id}`;
   },
-  // findAll: function(store, modelClass, sinceToken, snapshotRecordArray) {
-  //   // this.adapterOptions = snapshotRecordArray.adapterOptions;
-  //   return this._super(...arguments);
-  // }
+  findAll: function(store, modelClass, sinceToken, snapshotRecordArray) {
+    // not too bad as find all data is now obligatory
+    this.setDataFor('findAll', snapshotRecordArray.adapterOptions || {});
+    return this._super(...arguments);
+  }
 });
