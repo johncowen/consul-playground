@@ -7,18 +7,14 @@ import { typeOf } from '@ember/utils';
 // _data should be truly private
 const _data = [];
 export default Adapter.extend({
-  // not great but avoid private
+  // not great but avoids private
   // happier for the moment
-  dataForRequest: function(params)
-  {
-    switch(params.requestType) {
-      case "findAll":
-        params.query = assign(
-          {},
-          params.query,
-          this.getDataFor(params.requestType)
-        );
-    }
+  dataForRequest: function(params) {
+    params.query = assign(
+      {},
+      params.query, // this can be null
+      this.getDataFor(params.requestType)
+    );
     return this._super(params);
   },
   setDataFor(requestName, data) {
