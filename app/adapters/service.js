@@ -37,15 +37,15 @@ export default Adapter.extend({
     }
     return this._super(...arguments);
   },
+  findAll(store, modelClass, sinceToken, snapshotRecordArray) {
+    // not too bad as find all data is now obligatory
+    this.setDataFor('findAll', snapshotRecordArray.adapterOptions || {});
+    return this._super(...arguments);
+  },
   urlForFindAll() {
     return `/${this.namespace}/internal/ui/services`;
   },
   urlForFindRecord(id, modelName) {
     return `/${this.namespace}/health/service/${id}`;
   },
-  findAll: function(store, modelClass, sinceToken, snapshotRecordArray) {
-    // not too bad as find all data is now obligatory
-    this.setDataFor('findAll', snapshotRecordArray.adapterOptions || {});
-    return this._super(...arguments);
-  }
 });
