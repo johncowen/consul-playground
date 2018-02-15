@@ -1,7 +1,7 @@
 {{#hashicorp-consul}}
   {{#block-slot "internal-navigation"}}Datacenter / {{item.Name}} {{/block-slot}}
   {{#block-slot "content"}}
-    {{consul-service-list items=item.Services}}
+    {{consul-service-list items=items}}
     {{outlet}}
   {{/block-slot}}
 {{/hashicorp-consul}}

@@ -5,11 +5,16 @@ import { typeOf } from '@ember/utils';
 // lets float this:
 // Adapter is essentially a singleton
 // _data should be truly private
-const _data = [];
+const _data = {
+  'findAll': {
+    index: 1,
+    wait: '5m'// consul default, should probably eventually leave this up to consul, or possible candidate for other settings
+  }
+};
 export default Adapter.extend({
   // not great but avoids private
   // happier for the moment
-  dataForRequest: function(params) {
+  dataForRequest(params) {
     params.query = assign(
       {},
       params.query, // this can be null
@@ -18,13 +23,19 @@ export default Adapter.extend({
     return this._super(params);
   },
   setDataFor(requestName, data) {
-    _data[requestName] = data;
+    _data[requestName] = assign({index: _data[requestName].index, wait: _data[requestName].wait}, data);
   },
-  getDataFor(requestName, data) {
+  getDataFor(requestName) {
     if(typeOf(_data[requestName]) === "undefined") {
       return {};
     }
     return _data[requestName];
+  },
+  handleResponse(status, headers, payload, requestData) {
+    if(status == 200 && headers['x-consul-index']) {
+      this.setDataFor('findAll', {index: headers['x-consul-index']});
+    }
+    return this._super(...arguments);
   },
   urlForFindAll() {
     return `/${this.namespace}/internal/ui/services`;

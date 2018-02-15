@@ -8,21 +8,36 @@ export default Service.extend({
   findBySlug: function(slug) {
     // just populate the lot
     // for now
+    var item;
     return this.findAll().then(
       function(datacenters)
       {
         return datacenters.findBy('Name', slug);
       }
     ).then(
-      (item) => {
-        return this.get('service').findByDatacenter(item.get('Name')).then(
-          function(services)
-          {
-            set(item, 'Services', services);
-            // item.Services = services;
-            return item;
-          }
-        );
+      (datacenter) => {
+        item = datacenter;
+        // const result = this.get('service').findByDatacenter(item.get('Name'));
+        // return new Promise(
+        //   function(resolve, reject)
+        //   {
+        //     result.on(
+        //       'message',
+        //       function(result)
+        //       {
+        //         resolve(result)
+        //       }
+        //     );
+
+        //   }
+        // );
+      }
+    ).then(
+      function(services)
+      {
+        // set(item, 'Services', services);
+        // item.Services = services;
+        return item;
       }
     ).then(
       (item) => {

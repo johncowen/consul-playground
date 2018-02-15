@@ -2,6 +2,30 @@ import Route from '@ember/routing/route';
 import { Promise, hash } from 'rsvp';
 import { typeOf } from '@ember/utils';
 
+const isEventTarget = function(obj)
+{
+  return typeof obj.addEventListener !== "undefined";
+}
+const addEventListeners = function(controller, model)
+{
+  if(model != null) {
+    Object.keys(
+      model
+    ).forEach(
+      function(key) {
+        if(isEventTarget(model[key])) {
+          model[key].addEventListener(
+            'message',
+            function(data) {
+              controller.set(key, data);
+            }
+          );
+        }
+      }
+    );
+  }
+  return model;
+}
 export function initialize(application) {
   Route.reopen(
     {
@@ -24,6 +48,7 @@ export function initialize(application) {
       },
       setupController: function(controller, model)
       {
+        model = addEventListeners(controller, model);
         // if I mutate things on a model i.e. model.item
         // and then from a child of this Route
         // ask for a parents model.item is that mutation respected?
