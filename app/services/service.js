@@ -17,7 +17,16 @@ export default Service.extend({
           {
             reload: true,
             adapterOptions: {
-              // dc: datacenter
+              dc: datacenter
+            }
+          }
+        ).catch(
+          function(e) {
+            switch(e.errors[0].status) {
+              case "504":
+                break;
+              default:
+                throw e;
             }
           }
         );
